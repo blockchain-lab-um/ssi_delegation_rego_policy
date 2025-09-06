@@ -1,0 +1,34 @@
+{
+  "holder": "did:example:alice",
+  "currentDate": "2025-08-06",
+  "credentialSubject": {
+    "delegatee": "did:example:alice",
+    "roles": [
+      "spouse"
+    ],
+    "grants": [
+      "pick_up_registered_mail"
+    ],
+    "constraint": {
+      "location": "Depot_SI_Maribor_001",
+      "registeredMailTrackingId": "SI998877665PO",
+      "validFrom": "2025-08-01",
+      "validUntil": "2025-08-10"
+    }
+  },
+  "supportingCredentials": [
+    {
+      "id": "cred-marriage-001",
+      "issuer": "did:gov:si-mju",
+      "type": [
+        "VerifiableCredential",
+        "MarriageCredential"
+      ],
+      "credentialSubject": {
+        "spouseA": "did:example:delegatorA",
+        "spouseB": "did:example:alice"
+      },
+      "expirationDate": "2028-12-31"
+    }
+  ]
+}

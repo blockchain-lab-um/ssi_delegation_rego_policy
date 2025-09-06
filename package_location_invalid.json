@@ -1,0 +1,19 @@
+{
+  "holder": "did:example:carol",
+  "currentDate": "2025-09-06",
+  "credentialSubject": {
+    "delegatee": "did:example:carol",
+    "roles": [
+      "family"
+    ],
+    "grants": [
+      "pick_up_package"
+    ],
+    "constraint": {
+      "location": "Warehouse_SI_Ljubljana_002",
+      "validFrom": "2025-09-01",
+      "validUntil": "2025-09-15"
+    }
+  },
+  "supportingCredentials": []
+}
