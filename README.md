@@ -30,11 +30,14 @@ subject to **location** and **date window** constraints.
 │   └── package_delegatee_mismatch.json
 └── scripts/
     └── run_all.sh
+└── vc_vp/
+    └── example_presentation.json
 ```
 
 - `policy/delegation.rego`: the Rego policy (OPA v1.0+ syntax).
 - `inputs/`: JSON inputs covering **all logical scenarios** (both positive and negative).
 - `scripts/run_all.sh`: helper script to evaluate all inputs in batch.
+- `vc_vp/example_presentation.json`: an example **Verifiable Presentation (VP)** that holds both a **Verifiable Mandate (VM)** and a **MarriageCredential**. This VP illustrates how raw SSI data can be transformed into the input JSONs consumed by the policy.  
 
 ---
 
