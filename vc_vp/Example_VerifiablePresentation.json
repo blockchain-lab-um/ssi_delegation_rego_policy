@@ -1,0 +1,85 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1"
+  ],
+  "type": ["VerifiablePresentation", "MandatePresentation"],
+  "holder": "did:example:alice",
+  "verifiableCredential": [
+    {
+      "@context": [
+        "https://www.w3.org/2018/credentials/v1",
+        "https://your-university.edu/contexts/verifiable-mandate-v1.json"
+      ],
+      "id": "urn:uuid:2f3d6e2c-1f7a-4c1e-9d2d-2e3d4f5a6b7c",
+      "type": ["VerifiableCredential", "VerifiableMandate"],
+      "issuer": "did:example:delegatorA",
+      "issuanceDate": "2025-08-01T09:00:00Z",
+      "expirationDate": "2025-08-10T23:59:59Z",
+      "credentialSubject": {
+        "id": "did:example:delegatorA",
+        "delegatee": "did:example:alice",
+        "roles": ["spouse"],
+        "grants": ["pick_up_registered_mail"],
+        "constraint": {
+          "location": "PostOffice_SI_Maribor_001",
+          "registeredMailTrackingId": "SI998877665PO",
+          "validFrom": "2025-08-01",
+          "validUntil": "2025-08-10"
+        }
+      },
+      "credentialSchema": {
+        "id": "https://your-university.edu/schemas/verifiable-mandate-business.json",
+        "type": "JsonSchema2020-12"
+      },
+      "credentialPolicy": {
+        "id": "https://policy.post.si/delegation/pickup-registered-mail.rego",
+        "type": "RegoPolicy2024",
+        "description": "Policy for registered mail pickup; role=spouse, location prefix PostOffice_SI_, valid date window, and supporting MarriageCredential."
+      },
+      "credentialStatus": {
+        "id": "https://status.your-university.edu/vm/2f3d6e2c-1f7a-4c1e-9d2d-2e3d4f5a6b7c",
+        "type": "StatusList2021Entry"
+      },
+      "proof": {
+        "type": "Ed25519Signature2020",
+        "created": "2025-08-01T09:00:05Z",
+        "verificationMethod": "did:example:delegatorA#keys-1",
+        "proofPurpose": "assertionMethod",
+        "proofValue": "z3A...vmSig..."
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/2018/credentials/v1"
+      ],
+      "id": "urn:uuid:cred-marriage-001",
+      "type": ["VerifiableCredential", "MarriageCredential"],
+      "issuer": "did:gov:si-mju",
+      "issuanceDate": "2020-06-15T00:00:00Z",
+      "expirationDate": "2028-12-31T23:59:59Z",
+      "credentialSubject": {
+        "id": "did:example:alice",
+        "spouseA": "did:example:delegatorA",
+        "spouseB": "did:example:alice",
+        "marriageDate": "2018-05-20",
+        "registryOffice": "Maribor Civil Registry"
+      },
+      "proof": {
+        "type": "EcdsaSecp256k1Signature2019",
+        "created": "2020-06-15T00:00:01Z",
+        "verificationMethod": "did:gov:si-mju#keys-1",
+        "proofPurpose": "assertionMethod",
+        "jws": "eyJ...marriageSig..."
+      }
+    }
+  ],
+  "proof": {
+    "type": "Ed25519Signature2020",
+    "created": "2025-08-06T10:12:30Z",
+    "verificationMethod": "did:example:alice#keys-1",
+    "proofPurpose": "authentication",
+    "challenge": "9d6c4a9e-4f0c-4dc5-9b60-2b7c4c1b1e22",
+    "domain": "post.si",
+    "proofValue": "z5K...vpSig..."
+  }
+}
